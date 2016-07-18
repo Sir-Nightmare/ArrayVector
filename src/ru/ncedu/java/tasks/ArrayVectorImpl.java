@@ -71,7 +71,7 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public void sortAscending() {
-        
+
     }
 
     @Override
