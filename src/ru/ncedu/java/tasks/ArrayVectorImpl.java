@@ -1,7 +1,7 @@
 package ru.ncedu.java.tasks;
 
 /**
- * Created by Sir Nightmare on 7/16/2016.
+ * Class for vector
  */
 public class ArrayVectorImpl implements ArrayVector
 {
@@ -14,25 +14,26 @@ Your class must not have compilation errors (write your code in IDE).
 
 Instantiation with the no-argument constructor must not fail (it's recommended to test it in main() method).
      */
-    double[] arr;
-    int numOfCoordinates=0;
+    private double[] arr;
+    private int numOfCoordinates=0;
 
     public ArrayVectorImpl() {
         this(0,0);
     }
     public ArrayVectorImpl(double... elements) {
-        arr=elements;
-        numOfCoordinates=arr.length;
+        arr = elements;
+        numOfCoordinates = arr.length;
     }
 
     @Override
     public void set(double... elements) {
-
+        arr = elements;
+        numOfCoordinates = arr.length;
     }
 
     @Override
     public double[] get() {
-        return new double[0];
+        return arr;
     }
 
     @Override
