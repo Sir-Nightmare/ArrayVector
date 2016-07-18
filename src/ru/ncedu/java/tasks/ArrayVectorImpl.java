@@ -3,8 +3,7 @@ package ru.ncedu.java.tasks;
 /**
  * Class for vector
  */
-public class ArrayVectorImpl implements ArrayVector
-{
+public class ArrayVectorImpl implements ArrayVector {
 
     /*
     Your class must have a public no-argument constructor that means either the default constructor (the absence of any constructors in your code) or the presence of the following code:
@@ -15,11 +14,12 @@ Your class must not have compilation errors (write your code in IDE).
 Instantiation with the no-argument constructor must not fail (it's recommended to test it in main() method).
      */
     private double[] arr;
-    private int numOfCoordinates=0;
+    private int numOfCoordinates = 0;
 
     public ArrayVectorImpl() {
-        this(0,0);
+        this(0, 0);
     }
+
     public ArrayVectorImpl(double... elements) {
         arr = elements;
         numOfCoordinates = arr.length;
@@ -38,12 +38,15 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public ArrayVector clone() {
-        return null;
+        double[] newArray = new double[numOfCoordinates];
+        System.arraycopy(newArray, 0, arr, 0, numOfCoordinates);
+        ArrayVector newVector = new ArrayVectorImpl(newArray);
+        return newVector;
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return numOfCoordinates;
     }
 
     @Override
@@ -68,7 +71,7 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public void sortAscending() {
-
+        
     }
 
     @Override
