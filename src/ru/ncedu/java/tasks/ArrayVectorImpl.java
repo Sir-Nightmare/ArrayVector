@@ -51,7 +51,17 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public void set(int index, double value) {
-
+        if (index > 0) {
+            if (index < numOfCoordinates) {
+                arr[index] = value;
+            } else{
+                double[] newArray = new double[index+1];
+                System.arraycopy(newArray, 0, arr, 0, numOfCoordinates);
+                newArray[index]=value;
+                arr=newArray;
+                newArray=null;
+            }
+        }
     }
 
     @Override
@@ -61,6 +71,13 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public double getMax() {
+        double tempMax=arr[0];
+        for(int i=1;i<numOfCoordinates;i++) {
+           if(tempMax-arr[i]>0.0000001){
+
+           }
+        }
+
         return 0;
     }
 
@@ -81,7 +98,7 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public ArrayVector sum(ArrayVector anotherVector) {
-        return null;
+        return this;
     }
 
     @Override
