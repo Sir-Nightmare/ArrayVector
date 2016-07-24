@@ -73,17 +73,22 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
     public double getMax() {
         double tempMax=arr[0];
         for(int i=1;i<numOfCoordinates;i++) {
-           if(tempMax-arr[i]>0.0000001){
-
-           }
+            if(arr[i]-tempMax>1e-10){
+                tempMax=arr[i];
+            }
         }
-
-        return 0;
+        return tempMax;
     }
 
     @Override
     public double getMin() {
-        return 0;
+        double tempMin=arr[0];
+        for(int i=1;i<numOfCoordinates;i++) {
+            if(tempMin-arr[i]>1e-10){
+                tempMin=arr[i];
+            }
+        }
+        return tempMin;
     }
 
     @Override
