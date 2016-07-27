@@ -5,20 +5,20 @@ package ru.ncedu.java.tasks;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println ("Hello World!");
-        ArrayVector two = new ArrayVectorImpl(3,2,1,0);
-        double[] array1 = two.get();
-        ArrayVector one = two.clone();
+        System.out.println("Hello World!");
+        ArrayVector two = new ArrayVectorImpl(4, 3, 2, 1, 6);
+
+        ArrayVector one = new ArrayVectorImpl(1, 1, 1, 1);
         for (int i = 0; i < two.getSize(); i++) {
             System.out.print(two.get(i));
             System.out.print(' ');
-            }
+        }
+        two.set(7,99,12,13);
 
         System.out.println(' ');
-        for (int i = 0; i < one.getSize(); i++) {
-            System.out.print(one.get(i));
+        for (int i = 0; i < two.getSize(); i++) {
+            System.out.print(two.get(i));
             System.out.print(' ');
         }
-
     }
 }

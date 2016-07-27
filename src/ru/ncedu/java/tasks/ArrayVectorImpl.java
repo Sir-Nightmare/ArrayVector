@@ -1,22 +1,15 @@
 package ru.ncedu.java.tasks;
 
-import java.util.Arrays;
+        import java.util.Arrays;
 
-import static java.lang.Math.sqrt;
+        import static java.lang.Math.sqrt;
 
 /**
  * Class for vector
  */
 public class ArrayVectorImpl implements ArrayVector {
 
-    /*
-    Your class must have a public no-argument constructor that means either the default constructor (the absence of any constructors in your code) or the presence of the following code:
-   public ArrayVectorImpl(){ ... }
 
-Your class must not have compilation errors (write your code in IDE).
-
-Instantiation with the no-argument constructor must not fail (it's recommended to test it in main() method).
-     */
     private double[] arr;
     private int numOfCoordinates = 0;
 
@@ -57,15 +50,16 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public void set(int index, double value) {
-        if (index > 0) {
+        if (index >= 0) {
             if (index < numOfCoordinates) {
                 arr[index] = value;
             } else {
                 double[] newArray = new double[index + 1];
-                System.arraycopy(newArray, 0, arr, 0, numOfCoordinates);
+                System.arraycopy(arr, 0, newArray, 0, numOfCoordinates);
                 newArray[index] = value;
                 arr = newArray;
                 newArray = null;
+                numOfCoordinates=arr.length;
             }
         }
     }
@@ -78,7 +72,7 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
     @Override
     public double getMax() {
         double tempMax = arr[0];
-        for (int i = 1; i < numOfCoordinates; i++) {
+        for (int i = 0; i < numOfCoordinates; i++) {
             if (arr[i] - tempMax > 1e-10) {
                 tempMax = arr[i];
             }
@@ -89,7 +83,7 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
     @Override
     public double getMin() {
         double tempMin = arr[0];
-        for (int i = 1; i < numOfCoordinates; i++) {
+        for (int i = 0; i < numOfCoordinates; i++) {
             if (tempMin - arr[i] > 1e-10) {
                 tempMin = arr[i];
             }
@@ -104,14 +98,14 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public void mult(double factor) {
-        for (int i = 1; i < numOfCoordinates; i++) {
+        for (int i = 0; i < numOfCoordinates; i++) {
             arr[i] *= factor;
         }
     }
 
     @Override
     public ArrayVector sum(ArrayVector anotherVector) {
-        for (int i = 1; i < numOfCoordinates && i < anotherVector.getSize(); i++) {
+        for (int i = 0; i < numOfCoordinates && i < anotherVector.getSize(); i++) {
             arr[i] += anotherVector.get(i);
         }
 
@@ -121,7 +115,7 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
     @Override
     public double scalarMult(ArrayVector anotherVector) {
         double scalarMultResult = 0;
-        for (int i = 1; i < numOfCoordinates && i < anotherVector.getSize(); i++) {
+        for (int i = 0; i < numOfCoordinates && i < anotherVector.getSize(); i++) {
             scalarMultResult += arr[i] * anotherVector.get(i);
         }
 
@@ -130,8 +124,7 @@ Instantiation with the no-argument constructor must not fail (it's recommended t
 
     @Override
     public double getNorm() {
-        double normResult = sqrt(scalarMult(this));
-        return normResult;
+        return sqrt(scalarMult(this));
     }
 
 }
