@@ -38,8 +38,7 @@ public class ArrayVectorImpl implements ArrayVector {
     public ArrayVector clone() {
         double[] newArray = new double[numOfCoordinates];
         System.arraycopy(newArray, 0, arr, 0, numOfCoordinates);
-        ArrayVector newVector = new ArrayVectorImpl(newArray);
-        return newVector;
+        return new ArrayVectorImpl(newArray);
     }
 
     @Override
